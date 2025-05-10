@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>誕生日おみくじ🎉</title>
+    <link rel="stylesheet" href="css/css-doc.css">
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <!-- メインコンテナ -->
+    <div class="container">
+        <!-- タイトル部分 -->
+        <h1>🎂 誕生日特別おみくじ 🎂</h1>
+        <p class="subtitle">5月20日限定！3回チャレンジできるよ！</p>
+        
+        <!-- おみくじボックス -->
+        <div class="omikuji-box" id="omikujiBox">
+            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2ZmNjY2NiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjUiLz4KICA8dGV4dCB4PSI1MCUiIHk9IjUwJSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSI2MCIgZmlsbD0id2hpdGUiIGZvbnQtd2VpZ2h0PSJib2xkIj7jgYrjgb/jgY/jgZg8L3RleHQ+Cjwvc3ZnPg==" alt="おみくじ箱" id="omikujiImage">
+        </div>
+        
+        <!-- 残り回数表示 -->
+        <p class="remaining">残り<span id="remainingCount">3</span>回</p>
+        
+        <!-- おみくじを引くボタン -->
+        <button class="draw-button" id="drawButton">おみくじを引く！</button>
+        
+        <!-- 結果表示エリア -->
+        <div class="result-area" id="resultArea" style="display: none;">
+            <div class="result-message" id="resultMessage"></div>
+            <button class="retry-button" id="retryButton" style="display: none;">もう一回挑戦する？？</button>
+            <a href="https://google.com" target="_blank" class="gift-button" id="giftButton" style="display: none;">
+                下のボタンから、商品を受け取る
+            </a>
+        </div>
+    </div>
+    
+    <!-- 紙吹雪のコンテナ（大当たり時に使用） -->
+    <div id="confettiContainer"></div>
+    
+    <!-- JavaScriptファイルの読み込み -->
+    <script src="js/script.js"></script>
+</body>
+</html>

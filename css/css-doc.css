@@ -1,0 +1,231 @@
+/* 全体のスタイル */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #fff4e6, #ffe6f2, #e6f0ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* メインコンテナ */
+.container {
+    text-align: center;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 90%;
+}
+
+/* タイトル */
+h1 {
+    color: #ff6b6b;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+/* おみくじボックス */
+.omikuji-box {
+    margin: 30px auto;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.omikuji-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* おみくじボックスのアニメーション */
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px) rotate(-5deg); }
+    75% { transform: translateX(10px) rotate(5deg); }
+}
+
+/* 残り回数表示 */
+.remaining {
+    font-size: 1.3em;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+
+.remaining span {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #ff6b6b;
+}
+
+/* ボタンの共通スタイル */
+button, .gift-button {
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+}
+
+/* おみくじを引くボタン */
+.draw-button {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+.draw-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(255, 107, 107, 0.4);
+}
+
+.draw-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* もう一回挑戦ボタン */
+.retry-button {
+    background: #4a90e2;
+    color: white;
+    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+.retry-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(74, 144, 226, 0.4);
+}
+
+/* プレゼント受け取りボタン */
+.gift-button {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+}
+
+.gift-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(78, 205, 196, 0.4);
+}
+
+/* 結果表示エリア */
+.result-area {
+    margin-top: 30px;
+}
+
+.result-message {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ハズレの時のメッセージスタイル */
+.result-message.lose {
+    color: #4a90e2;
+}
+
+/* 大当たりの時のメッセージスタイル */
+.result-message.win {
+    color: #ff6b6b;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px #ff6b6b; }
+    to { text-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
+}
+
+/* 紙吹雪のスタイル */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #ff6b6b;
+    z-index: 1000;
+}
+
+/* 左からのクラッカーアニメーション */
+@keyframes shootFromLeft {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateX(50vw) translateY(-20vh) rotate(180deg);
+    }
+    100% {
+        transform: translateX(100vw) translateY(50vh) rotate(720deg);
+    }
+}
+
+/* 右からのクラッカーアニメーション */
+@keyframes shootFromRight {
+    0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateX(-50vw) translateY(-20vh) rotate(-180deg);
+    }
+    100% {
+        transform: translateX(-100vw) translateY(50vh) rotate(-720deg);
+    }
+}
+
+/* 上から降ってくるアニメーション */
+@keyframes fallFromTop {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.8;
+    }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .omikuji-box {
+        width: 150px;
+        height: 150px;
+    }
+    
+    button, .gift-button {
+        font-size: 1em;
+        padding: 12px 24px;
+    }
+}
