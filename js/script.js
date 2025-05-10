@@ -94,15 +94,14 @@ function loadSavedData() {
             // 前回の結果に応じて画面を復元
             if (data.lastResult === 'win') {
                 // 大当たりの場合
+                drawButton.style.display = 'none';
                 showWinResult(true); // 紙吹雪なしで表示
             } else if (attemptCount > 0 && attemptCount < TOTAL_ATTEMPTS) {
                 // ハズレで、まだ挑戦可能な場合
-                showLoseResult();
-                // もう一回挑戦ボタンを表示
-                retryButton.style.display = 'inline-block';
-                // おみくじを引くボタンは非表示のまま
                 drawButton.style.display = 'none';
-            } else if (attemptCount === 0) {
+                resultArea.style.display = 'block';
+                showLoseResult();
+            } else {
                 // まだ一度も引いていない場合
                 drawButton.style.display = 'inline-block';
                 drawButton.disabled = false;
@@ -166,6 +165,9 @@ function showLoseResult() {
     
     // おみくじを引くボタンを非表示
     drawButton.style.display = 'none';
+    
+    // 結果表示エリアを表示
+    resultArea.style.display = 'block';
 }
 
 // 大当たりの結果を表示
