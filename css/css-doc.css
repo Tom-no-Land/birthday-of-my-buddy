@@ -2,8 +2,8 @@
 body {
     margin: 0;
     padding: 20px;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(45deg, #fff4e6, #ffe6f2, #e6f0ff);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
+    background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -14,40 +14,69 @@ body {
 .container {
     text-align: center;
     background: white;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
     width: 90%;
+    position: relative;
 }
 
 /* タイトル */
-h1 {
+.title {
     color: #ff6b6b;
-    font-size: 2.5em;
+    font-size: 1.8em;
+    font-weight: bold;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cake-emoji {
+    font-size: 1.2em;
+    display: inline-block;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .subtitle {
     color: #666;
-    font-size: 1.2em;
+    font-size: 1em;
     margin-bottom: 30px;
+    font-weight: 500;
 }
 
 /* おみくじボックス */
 .omikuji-box {
     margin: 30px auto;
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #ff7b7b 0%, #ff5252 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(255, 82, 82, 0.3);
     transition: transform 0.3s ease;
 }
 
-.omikuji-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.omikuji-box:hover {
+    transform: scale(1.05);
+}
+
+.omikuji-text {
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* おみくじボックスのアニメーション */
@@ -56,29 +85,33 @@ h1 {
 }
 
 @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px) rotate(-5deg); }
-    75% { transform: translateX(10px) rotate(5deg); }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    20% { transform: translateX(-15px) rotate(-10deg); }
+    40% { transform: translateX(15px) rotate(10deg); }
+    60% { transform: translateX(-10px) rotate(-5deg); }
+    80% { transform: translateX(10px) rotate(5deg); }
 }
 
 /* 残り回数表示 */
 .remaining {
-    font-size: 1.3em;
-    color: #4a90e2;
-    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: 500;
 }
 
-.remaining span {
+.count-number {
+    font-size: 1.8em;
     font-weight: bold;
-    font-size: 1.5em;
-    color: #ff6b6b;
+    color: #ff5252;
+    margin: 0 5px;
 }
 
 /* ボタンの共通スタイル */
 button, .gift-button {
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
+    padding: 15px 35px;
+    font-size: 1.1em;
     font-weight: bold;
     border-radius: 50px;
     cursor: pointer;
@@ -86,18 +119,20 @@ button, .gift-button {
     text-decoration: none;
     display: inline-block;
     margin: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* おみくじを引くボタン */
 .draw-button {
-    background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
     color: white;
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    font-size: 1.2em;
+    padding: 18px 40px;
 }
 
 .draw-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 20px rgba(255, 107, 107, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(255, 82, 82, 0.3);
 }
 
 .draw-button:disabled {
@@ -111,39 +146,46 @@ button, .gift-button {
 .retry-button {
     background: #4a90e2;
     color: white;
-    box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
 }
 
 .retry-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 20px rgba(74, 144, 226, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(74, 144, 226, 0.3);
 }
 
 /* プレゼント受け取りボタン */
 .gift-button {
-    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
     color: white;
-    box-shadow: 0 5px 15px rgba(78, 205, 196, 0.3);
+    font-size: 1.1em;
 }
 
 .gift-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 7px 20px rgba(78, 205, 196, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 25px rgba(78, 205, 196, 0.3);
 }
 
 /* 結果表示エリア */
 .result-area {
     margin-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .result-message {
-    font-size: 1.8em;
+    font-size: 1.6em;
     font-weight: bold;
-    margin-bottom: 20px;
-    min-height: 100px;
+    margin-bottom: 25px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: 1.5;
+    padding: 0 20px;
 }
 
 /* ハズレの時のメッセージスタイル */
@@ -153,13 +195,16 @@ button, .gift-button {
 
 /* 大当たりの時のメッセージスタイル */
 .result-message.win {
-    color: #ff6b6b;
+    color: #ff5252;
+    background: linear-gradient(45deg, #fff4e6, #ffe6f2);
+    border-radius: 20px;
+    padding: 20px;
     animation: glow 1s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 10px #ff6b6b; }
-    to { text-shadow: 0 0 20px #ff6b6b, 0 0 30px #ff6b6b; }
+    from { box-shadow: 0 0 10px rgba(255, 82, 82, 0.3); }
+    to { box-shadow: 0 0 20px rgba(255, 82, 82, 0.5), 0 0 30px rgba(255, 82, 82, 0.3); }
 }
 
 /* 紙吹雪のスタイル */
@@ -211,12 +256,12 @@ button, .gift-button {
 
 /* レスポンシブデザイン */
 @media (max-width: 600px) {
-    h1 {
-        font-size: 2em;
+    .title {
+        font-size: 1.5em;
     }
     
     .container {
-        padding: 20px;
+        padding: 30px 20px;
     }
     
     .omikuji-box {
@@ -224,8 +269,16 @@ button, .gift-button {
         height: 150px;
     }
     
+    .omikuji-text {
+        font-size: 1.6em;
+    }
+    
     button, .gift-button {
         font-size: 1em;
-        padding: 12px 24px;
+        padding: 12px 28px;
+    }
+    
+    .draw-button {
+        padding: 15px 35px;
     }
 }
